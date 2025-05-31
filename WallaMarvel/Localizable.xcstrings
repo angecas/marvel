@@ -1,11 +1,33 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "add_favorite" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Favorite"
+          }
+        }
+      }
+    },
     "Comics" : {
 
     },
     "Error" : {
 
+    },
+    "favorites_limit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cannot add more than 5 favorites."
+          }
+        }
+      }
     },
     "Info" : {
 
@@ -35,8 +57,52 @@
         }
       }
     },
+    "no_name" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No name"
+          }
+        }
+      }
+    },
+    "no-description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No description"
+          }
+        }
+      }
+    },
+    "no-heroe-found" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No heroe found"
+          }
+        }
+      }
+    },
     "Operation completed successfully." : {
 
+    },
+    "removed_favorite" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hero removed from favorites."
+          }
+        }
+      }
     },
     "Search..." : {
 

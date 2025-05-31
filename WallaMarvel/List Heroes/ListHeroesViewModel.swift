@@ -11,6 +11,7 @@ final class ListHeroesViewModel {
     @Published private(set) var filteredHeroes: [Character] = []
     @Published private(set) var error: Bool = false
     @Published var searchText: String = ""
+    
     private(set) var isAscendingSort: Bool = false
 
     private var filterParameters: FilterParameters = FilterParameters() {

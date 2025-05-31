@@ -10,10 +10,17 @@ enum APIConfig {
 
     static func generateAuthQueryItems() -> [URLQueryItem] {
         let ts = String(Int(Date().timeIntervalSince1970))
-        let hash = "\(ts)\("188f9a5aa76846d907c41cbea6506e4cc455293f")\("d575c26d5c746f623518e753921ac847")".md5 //private and public
+        guard
+            let privateKey = Bundle.main.infoDictionary?["API_PRIVATE_KEY"] as? String,
+            let publicKey = Bundle.main.infoDictionary?["API_PUBLIC_KEY"] as? String
+        else {
+            fatalError("Missing API keys in Info.plist")
+        }
+
+        let hash = "\(ts)\(privateKey)\(publicKey)".md5
 
         return [
-            URLQueryItem(name: "apikey", value: "d575c26d5c746f623518e753921ac847"), //public
+            URLQueryItem(name: "apikey", value: publicKey),
             URLQueryItem(name: "ts", value: ts),
             URLQueryItem(name: "hash", value: hash)
         ]
