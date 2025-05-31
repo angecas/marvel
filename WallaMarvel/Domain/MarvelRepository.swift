@@ -1,7 +1,8 @@
 import Foundation
 
 protocol MarvelRepositoryProtocol {
-    func getHeroes(completionBlock: @escaping (CharacterDataContainer) -> Void)
+    func getHeroes(filterParameters: FilterParameters) async throws -> CharacterDataWrapper?
+    func getHeroesDetail(id: Int) async throws -> CharacterDataWrapper?
 }
 
 final class MarvelRepository: MarvelRepositoryProtocol {
@@ -11,7 +12,19 @@ final class MarvelRepository: MarvelRepositoryProtocol {
         self.dataSource = dataSource
     }
     
-    func getHeroes(completionBlock: @escaping (CharacterDataContainer) -> Void) {
-        dataSource.getHeroes(completionBlock: completionBlock)
+    func getHeroes(filterParameters: FilterParameters) async -> CharacterDataWrapper? {
+        do {
+            return try await dataSource.getHeroes(filterParameters: filterParameters)
+        } catch {
+            return nil
+        }
+    }
+    
+    func getHeroesDetail(id: Int) async -> CharacterDataWrapper? {
+        do {
+            return try await dataSource.getHeroesDetail(id: id)
+        } catch {
+            return nil
+        }
     }
 }

@@ -1,0 +1,72 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Comics" : {
+
+    },
+    "Error" : {
+
+    },
+    "Info" : {
+
+    },
+    "Last Modified: %@" : {
+
+    },
+    "list_heroes_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "List of Heroes"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lista de Héroes"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lista de Heróis"
+          }
+        }
+      }
+    },
+    "Operation completed successfully." : {
+
+    },
+    "Search..." : {
+
+    },
+    "Series" : {
+
+    },
+    "some_error" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Something went wrong."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Algo salió mal"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alguma coisa correu mal."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
