@@ -97,7 +97,7 @@ struct List: Codable {
 // MARK: - FilterParameters
 struct FilterParameters: Codable {
     var nameStartsWith: String?
-    var orderBy: String?
+    var isAscendingSort: Bool = false
     var offset: Int = 0
     var limit: Int = 20
 
@@ -108,13 +108,19 @@ struct FilterParameters: Codable {
             items.append(URLQueryItem(name: "nameStartsWith", value: name))
         }
 
-        if let order = orderBy {
-            items.append(URLQueryItem(name: "orderBy", value: order))
+        if isAscendingSort {
+            items.append(URLQueryItem(name: "orderBy", value: orderBy))
         }
 
         items.append(URLQueryItem(name: "offset", value: "\(offset)"))
         items.append(URLQueryItem(name: "limit", value: "\(limit)"))
 
         return items
+    }
+}
+
+extension FilterParameters {
+    var orderBy: String {
+        isAscendingSort ? "-name" : "name"
     }
 }

@@ -18,9 +18,7 @@ class UIHostingTableViewCell<T>: UITableViewCell {
     var cellType: TableViewCellType = .heroesList
     
     var data: T?
-    
-    var cellAction: (() -> Void)?
-    
+        
     private var hostingController: UIHostingController<AnyView>? {
         
         didSet {

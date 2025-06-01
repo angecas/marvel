@@ -48,7 +48,7 @@ final class ListHeroesViewModel {
 
         filterParameters = FilterParameters(
             nameStartsWith: filterParameters.nameStartsWith,
-            orderBy: filterParameters.orderBy,
+            isAscendingSort: filterParameters.isAscendingSort,
             offset: 0,
             limit: 20
         )
@@ -99,7 +99,7 @@ final class ListHeroesViewModel {
     func sortData() {
         isAscendingSort.toggle()
         var params = filterParameters
-        params.orderBy = isAscendingSort ? "-name" : "name"
+        params.isAscendingSort = isAscendingSort
         params.offset = 0
         currentPage = 0
         filterParameters = params

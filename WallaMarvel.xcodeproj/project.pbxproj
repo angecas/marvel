@@ -161,7 +161,6 @@
 		1A0E3A972862F7E200132FCB /* WallaMarvel */ = {
 			isa = PBXGroup;
 			children = (
-				749617CD2DE645BF00B7D270 /* SwiftUI */,
 				749617B72DE4E9E500B7D270 /* AppCoordinator.swift */,
 				749617D32DE671DA00B7D270 /* BaseCoordinator.swift */,
 				1A0E3A982862F7E200132FCB /* AppDelegate.swift */,
@@ -169,6 +168,7 @@
 				1A821EC52862FD500024D397 /* Detail Heroe */,
 				749617D02DE6605400B7D270 /* FavoriteHeroes */,
 				1A821EC42862FD470024D397 /* List Heroes */,
+				749617CD2DE645BF00B7D270 /* SwiftUI */,
 				1A821EC62862FD650024D397 /* Domain */,
 				1A821EC72862FD6E0024D397 /* Data */,
 				744627BB2DEB99F3008B692A /* Config.xcconfig */,
@@ -183,10 +183,8 @@
 		1A0E3AAE2862F7E300132FCB /* WallaMarvelTests */ = {
 			isa = PBXGroup;
 			children = (
+				744627CD2DEC8497008B692A /* Mocks */,
 				744627CB2DEC1591008B692A /* UserDefaultsHelperTests.swift */,
-				744627C92DEC138B008B692A /* MockUserDefaults.swift */,
-				744627C72DEC125C008B692A /* MockURLProtocol.swift */,
-				744627C52DEC0784008B692A /* MockGetHeroesUseCase.swift */,
 				744627C32DEBCDE4008B692A /* ApiClientUnitTests.swift */,
 				744627C12DEBCCF4008B692A /* ListHeroesViewModelTests.swift */,
 				1A0E3AAF2862F7E300132FCB /* DetailViewModelTests.swift */,
@@ -268,12 +266,30 @@
 			path = UseCases;
 			sourceTree = "<group>";
 		};
+		744627CD2DEC8497008B692A /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				744627C52DEC0784008B692A /* MockGetHeroesUseCase.swift */,
+				744627C72DEC125C008B692A /* MockURLProtocol.swift */,
+				744627C92DEC138B008B692A /* MockUserDefaults.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		744627CE2DEC851D008B692A /* UIViews */ = {
+			isa = PBXGroup;
+			children = (
+				744627A52DE8FD59008B692A /* HeroesListUIView.swift */,
+				744627AB2DEA3C37008B692A /* HeroeDetailsUIView.swift */,
+				744627AD2DEA6CFD008B692A /* SearchBarUIView.swift */,
+			);
+			path = UIViews;
+			sourceTree = "<group>";
+		};
 		749617CD2DE645BF00B7D270 /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				744627AD2DEA6CFD008B692A /* SearchBarUIView.swift */,
-				744627AB2DEA3C37008B692A /* HeroeDetailsUIView.swift */,
-				744627A52DE8FD59008B692A /* HeroesListUIView.swift */,
+				744627CE2DEC851D008B692A /* UIViews */,
 				749617DB2DE8866F00B7D270 /* UIHostingTableViewCell.swift */,
 			);
 			path = SwiftUI;
