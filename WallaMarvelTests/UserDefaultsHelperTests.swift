@@ -16,13 +16,16 @@ final class UserDefaultsHelperTests: XCTestCase {
         let helper = UserDefaultsHelper(defaults: mockDefaults)
 
         XCTAssertEqual(helper.getFavoriteHeroes(), [])
-
+        XCTAssertEqual(helper.getFavoriteHeroes().count, 0)
+        
         let saved = helper.saveFavoriteHero(1)
         XCTAssertTrue(saved)
         XCTAssertEqual(helper.getFavoriteHeroes(), [1])
+        XCTAssertEqual(helper.getFavoriteHeroes().count, 1)
 
         XCTAssertFalse(helper.saveFavoriteHero(1))
         XCTAssertEqual(helper.getFavoriteHeroes(), [1])
+        XCTAssertEqual(helper.getFavoriteHeroes().count, 1)
     }
 
     func testSaveFavoriteHeroLimitsToMaxFavorites() {
@@ -45,12 +48,15 @@ final class UserDefaultsHelperTests: XCTestCase {
         _ = helper.saveFavoriteHero(1)
         _ = helper.saveFavoriteHero(2)
         XCTAssertEqual(helper.getFavoriteHeroes(), [2, 1])
+        XCTAssertEqual(helper.getFavoriteHeroes().count, 2)
 
         helper.removeFavoriteHero(2)
         XCTAssertEqual(helper.getFavoriteHeroes(), [1])
+        XCTAssertEqual(helper.getFavoriteHeroes().count, 1)
 
         helper.removeFavoriteHero(99)
         XCTAssertEqual(helper.getFavoriteHeroes(), [1])
+        XCTAssertEqual(helper.getFavoriteHeroes().count, 1)
     }
 
     func testIsFavoriteHero() {
@@ -60,5 +66,7 @@ final class UserDefaultsHelperTests: XCTestCase {
         XCTAssertFalse(helper.isFavoriteHero(1))
         _ = helper.saveFavoriteHero(1)
         XCTAssertTrue(helper.isFavoriteHero(1))
+        helper.removeFavoriteHero(1)
+        XCTAssertFalse(helper.isFavoriteHero(1))
     }
 }

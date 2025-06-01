@@ -40,6 +40,8 @@ final class MockGetHeroesUseCase: GetHeroesUseCaseProtocol {
     }
     
     func executeDetails(id: Int) async throws -> CharacterDataWrapper? {
+        mockCharacters = [Character(id: id, name: "", description: "", modified: "", resourceURI: "", urls: [], thumbnail: nil, comics: nil, stories: nil, event: nil, series: nil)]
+        
         if shouldReturnError {
             throw NSError(domain: "MockError", code: -1, userInfo: nil)
         }
