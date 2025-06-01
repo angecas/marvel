@@ -42,6 +42,7 @@ final class ListHeroesViewController: UIViewController {
         tableView.register(UIHostingTableViewCell<Character>.self, forCellReuseIdentifier: "HeroHostingCell")
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.accessibilityIdentifier = "heroesTableView"
         return tableView
     }()
 
@@ -134,6 +135,7 @@ final class ListHeroesViewController: UIViewController {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard !viewModel.isLoading, viewModel.hasMoreData else { return }
         let bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height
         if bottomEdge >= scrollView.contentSize.height {
             DispatchQueue.main.async {

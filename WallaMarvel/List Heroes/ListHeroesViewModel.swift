@@ -13,6 +13,8 @@ final class ListHeroesViewModel {
     @Published var searchText: String = ""
     
     private(set) var isAscendingSort: Bool = false
+    private(set) var isLoading = false
+    private(set) var hasMoreData = true
 
     private var filterParameters: FilterParameters = FilterParameters() {
         didSet {
@@ -22,10 +24,8 @@ final class ListHeroesViewModel {
 
     private var cancellables = Set<AnyCancellable>()
     private var currentRequestID = 0
-    private var isLoading = false
-    private var hasMoreData = true
     private var currentPage = 0
-
+    private var heroesTotalCount = 0
     private let getHeroesUseCase: GetHeroesUseCaseProtocol
 
     init(getHeroesUseCase: GetHeroesUseCaseProtocol = GetHeroes()) {
@@ -79,10 +79,14 @@ final class ListHeroesViewModel {
                 if filterParameters.offset == 0 {
                     self.heroes = newHeroes
                     self.filteredHeroes = newHeroes
+                    self.heroesTotalCount = container?.data?.total ?? 0
                 } else {
                     self.heroes += newHeroes
                     self.filteredHeroes += newHeroes
                 }
+
+                self.hasMoreData = self.heroes.count < self.heroesTotalCount
+                
                 self.isLoading = false
             } catch {
                 guard requestID == self.currentRequestID else { return }

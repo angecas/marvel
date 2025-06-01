@@ -12,7 +12,7 @@
 		1A0E3A9D2862F7E200132FCB /* ListHeroesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0E3A9C2862F7E200132FCB /* ListHeroesViewController.swift */; };
 		1A0E3AA22862F7E300132FCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A0E3AA12862F7E300132FCB /* Assets.xcassets */; };
 		1A0E3AA52862F7E300132FCB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A0E3AA32862F7E300132FCB /* LaunchScreen.storyboard */; };
-		1A0E3AB02862F7E300132FCB /* WallaMarvelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0E3AAF2862F7E300132FCB /* WallaMarvelTests.swift */; };
+		1A0E3AB02862F7E300132FCB /* DetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0E3AAF2862F7E300132FCB /* DetailViewModelTests.swift */; };
 		1A0E3ABA2862F7E300132FCB /* WallaMarvelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0E3AB92862F7E300132FCB /* WallaMarvelUITests.swift */; };
 		1A0E3ABC2862F7E300132FCB /* WallaMarvelUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0E3ABB2862F7E300132FCB /* WallaMarvelUITestsLaunchTests.swift */; };
 		1A821EC92862FE3C0024D397 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A821EC82862FE3C0024D397 /* APIClient.swift */; };
@@ -24,10 +24,15 @@
 		744627AC2DEA3C37008B692A /* HeroeDetailsUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744627AB2DEA3C37008B692A /* HeroeDetailsUIView.swift */; };
 		744627AE2DEA6CFD008B692A /* SearchBarUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744627AD2DEA6CFD008B692A /* SearchBarUIView.swift */; };
 		744627B02DEA78F8008B692A /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744627AF2DEA78F3008B692A /* UserDefaultsHelper.swift */; };
-		744627B22DEA7B7D008B692A /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744627B12DEA7B7D008B692A /* FavoritesManager.swift */; };
 		744627B42DEB073B008B692A /* FavoriteHeroesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744627B32DEB073B008B692A /* FavoriteHeroesViewController.swift */; };
 		744627B62DEB0B48008B692A /* FavoriteHeroesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744627B52DEB0B48008B692A /* FavoriteHeroesViewModel.swift */; };
 		744627BC2DEB99F3008B692A /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 744627BB2DEB99F3008B692A /* Config.xcconfig */; };
+		744627C22DEBCD00008B692A /* ListHeroesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744627C12DEBCCF4008B692A /* ListHeroesViewModelTests.swift */; };
+		744627C42DEBCDF2008B692A /* ApiClientUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744627C32DEBCDE4008B692A /* ApiClientUnitTests.swift */; };
+		744627C62DEC0784008B692A /* MockGetHeroesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744627C52DEC0784008B692A /* MockGetHeroesUseCase.swift */; };
+		744627C82DEC125C008B692A /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744627C72DEC125C008B692A /* MockURLProtocol.swift */; };
+		744627CA2DEC138B008B692A /* MockUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744627C92DEC138B008B692A /* MockUserDefaults.swift */; };
+		744627CC2DEC1591008B692A /* UserDefaultsHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744627CB2DEC1591008B692A /* UserDefaultsHelperTests.swift */; };
 		749617B82DE4E9F200B7D270 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749617B72DE4E9E500B7D270 /* AppCoordinator.swift */; };
 		749617BA2DE4EB6F00B7D270 /* ListHeroesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749617B92DE4EB6700B7D270 /* ListHeroesCoordinator.swift */; };
 		749617BC2DE4EF5B00B7D270 /* ListHeroesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749617BB2DE4EF5600B7D270 /* ListHeroesViewModel.swift */; };
@@ -68,7 +73,7 @@
 		1A0E3AA12862F7E300132FCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A0E3AA62862F7E300132FCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A0E3AAB2862F7E300132FCB /* WallaMarvelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WallaMarvelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1A0E3AAF2862F7E300132FCB /* WallaMarvelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallaMarvelTests.swift; sourceTree = "<group>"; };
+		1A0E3AAF2862F7E300132FCB /* DetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelTests.swift; sourceTree = "<group>"; };
 		1A0E3AB52862F7E300132FCB /* WallaMarvelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WallaMarvelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A0E3AB92862F7E300132FCB /* WallaMarvelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallaMarvelUITests.swift; sourceTree = "<group>"; };
 		1A0E3ABB2862F7E300132FCB /* WallaMarvelUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallaMarvelUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -81,10 +86,15 @@
 		744627AB2DEA3C37008B692A /* HeroeDetailsUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroeDetailsUIView.swift; sourceTree = "<group>"; };
 		744627AD2DEA6CFD008B692A /* SearchBarUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarUIView.swift; sourceTree = "<group>"; };
 		744627AF2DEA78F3008B692A /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
-		744627B12DEA7B7D008B692A /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
 		744627B32DEB073B008B692A /* FavoriteHeroesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteHeroesViewController.swift; sourceTree = "<group>"; };
 		744627B52DEB0B48008B692A /* FavoriteHeroesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteHeroesViewModel.swift; sourceTree = "<group>"; };
 		744627BB2DEB99F3008B692A /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		744627C12DEBCCF4008B692A /* ListHeroesViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHeroesViewModelTests.swift; sourceTree = "<group>"; };
+		744627C32DEBCDE4008B692A /* ApiClientUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClientUnitTests.swift; sourceTree = "<group>"; };
+		744627C52DEC0784008B692A /* MockGetHeroesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGetHeroesUseCase.swift; sourceTree = "<group>"; };
+		744627C72DEC125C008B692A /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
+		744627C92DEC138B008B692A /* MockUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserDefaults.swift; sourceTree = "<group>"; };
+		744627CB2DEC1591008B692A /* UserDefaultsHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelperTests.swift; sourceTree = "<group>"; };
 		749617B72DE4E9E500B7D270 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		749617B92DE4EB6700B7D270 /* ListHeroesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHeroesCoordinator.swift; sourceTree = "<group>"; };
 		749617BB2DE4EF5600B7D270 /* ListHeroesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHeroesViewModel.swift; sourceTree = "<group>"; };
@@ -173,7 +183,13 @@
 		1A0E3AAE2862F7E300132FCB /* WallaMarvelTests */ = {
 			isa = PBXGroup;
 			children = (
-				1A0E3AAF2862F7E300132FCB /* WallaMarvelTests.swift */,
+				744627CB2DEC1591008B692A /* UserDefaultsHelperTests.swift */,
+				744627C92DEC138B008B692A /* MockUserDefaults.swift */,
+				744627C72DEC125C008B692A /* MockURLProtocol.swift */,
+				744627C52DEC0784008B692A /* MockGetHeroesUseCase.swift */,
+				744627C32DEBCDE4008B692A /* ApiClientUnitTests.swift */,
+				744627C12DEBCCF4008B692A /* ListHeroesViewModelTests.swift */,
+				1A0E3AAF2862F7E300132FCB /* DetailViewModelTests.swift */,
 			);
 			path = WallaMarvelTests;
 			sourceTree = "<group>";
@@ -230,7 +246,6 @@
 			isa = PBXGroup;
 			children = (
 				744627AF2DEA78F3008B692A /* UserDefaultsHelper.swift */,
-				744627B12DEA7B7D008B692A /* FavoritesManager.swift */,
 				749617CE2DE6476100B7D270 /* KeychainHelper.swift */,
 				1A821ECB2862FF990024D397 /* String+Extension.swift */,
 			);
@@ -439,7 +454,6 @@
 				749617BC2DE4EF5B00B7D270 /* ListHeroesViewModel.swift in Sources */,
 				1A0E3A9B2862F7E200132FCB /* SceneDelegate.swift in Sources */,
 				749617D42DE671DA00B7D270 /* BaseCoordinator.swift in Sources */,
-				744627B22DEA7B7D008B692A /* FavoritesManager.swift in Sources */,
 				749617BA2DE4EB6F00B7D270 /* ListHeroesCoordinator.swift in Sources */,
 				1A821EC92862FE3C0024D397 /* APIClient.swift in Sources */,
 				744627AE2DEA6CFD008B692A /* SearchBarUIView.swift in Sources */,
@@ -450,7 +464,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A0E3AB02862F7E300132FCB /* WallaMarvelTests.swift in Sources */,
+				744627C22DEBCD00008B692A /* ListHeroesViewModelTests.swift in Sources */,
+				1A0E3AB02862F7E300132FCB /* DetailViewModelTests.swift in Sources */,
+				744627C82DEC125C008B692A /* MockURLProtocol.swift in Sources */,
+				744627CC2DEC1591008B692A /* UserDefaultsHelperTests.swift in Sources */,
+				744627C42DEBCDF2008B692A /* ApiClientUnitTests.swift in Sources */,
+				744627CA2DEC138B008B692A /* MockUserDefaults.swift in Sources */,
+				744627C62DEC0784008B692A /* MockGetHeroesUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

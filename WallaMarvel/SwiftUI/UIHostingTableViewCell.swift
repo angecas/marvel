@@ -15,11 +15,9 @@ enum TableViewCellType {
 }
 
 class UIHostingTableViewCell<T>: UITableViewCell {
-    //<T, Z>
     var cellType: TableViewCellType = .heroesList
     
     var data: T?
-//    var type: Z?
     
     var cellAction: (() -> Void)?
     

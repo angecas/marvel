@@ -7,15 +7,23 @@
 
 import Foundation
 import Foundation
+protocol UserDefaultsProtocol {
+    func array(forKey defaultName: String) -> [Any]?
+    func set(_ value: Any?, forKey defaultName: String)
+}
+
+extension UserDefaults: UserDefaultsProtocol {}
 
 class UserDefaultsHelper {
     static let shared = UserDefaultsHelper()
-    
-    private let defaults = UserDefaults.standard
+
+    private let defaults: UserDefaultsProtocol
     private let favoritesKey = "favoriteHeroes"
     private let maxFavorites = 5
 
-    private init() {}
+    init(defaults: UserDefaultsProtocol = UserDefaults.standard) {
+        self.defaults = defaults
+    }
 
     func saveFavoriteHero(_ hero: Int) -> Bool {
         var favorites = defaults.array(forKey: favoritesKey) as? [Int] ?? []
