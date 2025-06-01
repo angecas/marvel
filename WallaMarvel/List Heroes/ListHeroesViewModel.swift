@@ -8,29 +8,29 @@ import Combine
 import Foundation
 final class ListHeroesViewModel {
     @Published private(set) var heroes: [Character] = []
-    @Published private(set) var filteredHeroes: [Character] = []
+    @Published private(set) var filteredHeroes: [Character]? = nil
     @Published private(set) var error: Bool = false
     @Published var searchText: String = ""
     
     private(set) var isAscendingSort: Bool = false
     private(set) var isLoading = false
     private(set) var hasMoreData = true
-
+    
     private var filterParameters: FilterParameters = FilterParameters() {
         didSet {
             fetchPage(filterParameters: filterParameters)
         }
     }
-
+    
     private var cancellables = Set<AnyCancellable>()
     private var currentRequestID = 0
     private var currentPage = 0
     private var heroesTotalCount = 0
     private let getHeroesUseCase: GetHeroesUseCaseProtocol
-
+    
     init(getHeroesUseCase: GetHeroesUseCaseProtocol = GetHeroes()) {
         self.getHeroesUseCase = getHeroesUseCase
-
+        
         $searchText
             .removeDuplicates()
             .debounce(for: .milliseconds(300), scheduler: DispatchQueue.main)
@@ -39,13 +39,13 @@ final class ListHeroesViewModel {
             }
             .store(in: &cancellables)
     }
-
+    
     func fetchHeroes() {
         currentPage = 0
         hasMoreData = true
         heroes = []
-        filteredHeroes = []
-
+        filteredHeroes = nil
+        
         filterParameters = FilterParameters(
             nameStartsWith: filterParameters.nameStartsWith,
             isAscendingSort: filterParameters.isAscendingSort,
@@ -53,38 +53,38 @@ final class ListHeroesViewModel {
             limit: 20
         )
     }
-
+    
     func fetchMoreHeroes() {
         guard !isLoading, hasMoreData else { return }
         currentPage += 1
-
+        
         var params = filterParameters
         params.offset = currentPage * params.limit
         filterParameters = params
     }
-
+    
     private func fetchPage(filterParameters: FilterParameters) {
         isLoading = true
         currentRequestID += 1
         let requestID = currentRequestID
-
+        
         Task { [weak self] in
             guard let self = self else { return }
             do {
                 let container = try await self.getHeroesUseCase.execute(filterParameters: filterParameters)
                 let newHeroes = container?.data?.characters ?? []
-
+                
                 guard requestID == self.currentRequestID else { return }
-
+                
                 if filterParameters.offset == 0 {
                     self.heroes = newHeroes
                     self.filteredHeroes = newHeroes
                     self.heroesTotalCount = container?.data?.total ?? 0
                 } else {
                     self.heroes += newHeroes
-                    self.filteredHeroes += newHeroes
+                    self.filteredHeroes = self.heroes
                 }
-
+                
                 self.hasMoreData = self.heroes.count < self.heroesTotalCount
                 
                 self.isLoading = false
@@ -95,7 +95,7 @@ final class ListHeroesViewModel {
             }
         }
     }
-
+    
     func sortData() {
         isAscendingSort.toggle()
         var params = filterParameters
@@ -103,13 +103,15 @@ final class ListHeroesViewModel {
         params.offset = 0
         currentPage = 0
         filterParameters = params
+        filteredHeroes = nil
     }
-
+    
     func searchFreeText(_ text: String) {
         var params = filterParameters
         params.nameStartsWith = text
         params.offset = 0
         currentPage = 0
         filterParameters = params
+        filteredHeroes = nil
     }
 }

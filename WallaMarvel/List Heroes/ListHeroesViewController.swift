@@ -3,13 +3,13 @@ import SwiftUI
 import Combine
 
 final class ListHeroesViewController: UIViewController {
-
+    
     private var cancellables = Set<AnyCancellable>()
     private let viewModel: ListHeroesViewModel
     private let coordinator: ListHeroesCoordinator
     private var heroes: [Character] = []
     private var searchBarHeightConstraint = NSLayoutConstraint()
-
+    
     private var isSearching: Bool = false {
         didSet {
             searchBarHeightConstraint.constant = isSearching ? 44 : 0
@@ -17,10 +17,10 @@ final class ListHeroesViewController: UIViewController {
             view.layoutIfNeeded()
         }
     }
-
+    
     private var searchText: String = "" {
         didSet {
-                self.viewModel.searchFreeText(self.searchText)
+            self.viewModel.searchFreeText(self.searchText)
         }
     }
     private lazy var searchBar: UIView = {
@@ -35,7 +35,7 @@ final class ListHeroesViewController: UIViewController {
         hostingController.view.isHidden = true
         return hostingController.view
     }()
-
+    
     private lazy var heroesTableView: UITableView = {
         let tableView = UITableView()
         tableView.separatorStyle = .none
@@ -45,7 +45,7 @@ final class ListHeroesViewController: UIViewController {
         tableView.accessibilityIdentifier = "heroesTableView"
         return tableView
     }()
-
+    
     private lazy var noHeroesLabel: UILabel = {
         let label = UILabel()
         label.adjustsFontForContentSizeCategory = true
@@ -57,18 +57,18 @@ final class ListHeroesViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
+    
     init(viewModel: ListHeroesViewModel = ListHeroesViewModel(), coordinator: ListHeroesCoordinator) {
         self.viewModel = viewModel
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
         self.coordinator.delegate = self
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         heroesTableView.dataSource = self
@@ -81,34 +81,35 @@ final class ListHeroesViewController: UIViewController {
         
         bindViewModel()
     }
-
+    
     private func setupLayout() {
         view.addSubview(searchBar)
         view.addSubview(heroesTableView)
         view.addSubview(noHeroesLabel)
-
+        
         searchBarHeightConstraint = searchBar.heightAnchor.constraint(equalToConstant: 0)
-
+        
         NSLayoutConstraint.activate([
             searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 4),
             searchBarHeightConstraint,
             searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-
+            
             heroesTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             heroesTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             heroesTableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 4),
             heroesTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-
+            
             noHeroesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             noHeroesLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
     }
-
+    
     private func bindViewModel() {
         viewModel.$filteredHeroes
             .receive(on: DispatchQueue.main)
             .sink { [weak self] heroes in
+                guard let heroes = heroes else { return }
                 let hasSearchText = !(self?.searchText.trimmed().isEmpty ?? true)
                 DispatchQueue.main.async {
                     self?.coordinator.updateSearchIcon(hasActiveSearch: hasSearchText)
@@ -150,7 +151,7 @@ extension ListHeroesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         heroes.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let hero = heroes[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "HeroHostingCell", for: indexPath) as! UIHostingTableViewCell<Character>
@@ -158,25 +159,25 @@ extension ListHeroesViewController: UITableViewDataSource, UITableViewDelegate {
         cell.uiTableViewCell()
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedHero = heroes[indexPath.row]
         coordinator.showHeroDetail(hero: selectedHero)
     }
-
+    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         guard let heroID = self.heroes[indexPath.row].id else { return nil }
         let isFavoriteHero = UserDefaultsHelper.shared.isFavoriteHero(heroID)
-
+        
         let action: UIContextualAction
-
+        
         if isFavoriteHero {
             action = UIContextualAction(style: .normal, title: "Remove Favorite") { [weak self] action, view, completionHandler in
                 guard let self = self else {
                     completionHandler(false)
                     return
                 }
-
+                
                 UserDefaultsHelper.shared.removeFavoriteHero(heroID)
                 self.coordinator.showToaster("Hero removed from favorites.", toasterType: .informative)
                 completionHandler(true)
@@ -188,7 +189,7 @@ extension ListHeroesViewController: UITableViewDataSource, UITableViewDelegate {
                     completionHandler(false)
                     return
                 }
-
+                
                 let saved = UserDefaultsHelper.shared.saveFavoriteHero(heroID)
                 if saved {
                     self.coordinator.showToaster("Successfully saved hero.", toasterType: .informative)
@@ -199,7 +200,7 @@ extension ListHeroesViewController: UITableViewDataSource, UITableViewDelegate {
             }
             action.backgroundColor = .systemRed
         }
-
+        
         let config = UISwipeActionsConfiguration(actions: [action])
         config.performsFirstActionWithFullSwipe = false
         return config
@@ -210,7 +211,7 @@ extension ListHeroesViewController: ListHeroesCoordinatorDelegate {
     func didTapSearch() {
         isSearching.toggle()
     }
-
+    
     func didTapSort() {
         DispatchQueue.main.async {
             self.coordinator.showLoading()
