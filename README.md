@@ -63,7 +63,7 @@ I added a Favorites page where users can see and manage their saved heroes.
 ## Known Issues / TODO
 
 - Add authentication to securely store and manage Marvel API keys (important for app security).
-
+- Finish localizable strings.
 
 
 
