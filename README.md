@@ -6,7 +6,7 @@ In this project, I explore the Marvel API and implement some features within iOS
 
 ## Getting Started
 
-Clone this project, then locate the file named `Config.xcconfig`.  
+Clone this project, then create a file named `Config.xcconfig`.  
 Inside, replace the public and private API keys with your own keys.  
 You can create a Marvel API key here: [Marvel Developer Portal](https://developer.marvel.com/)
 
